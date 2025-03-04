@@ -1,9 +1,5 @@
 # Install Fibratus
-curl https://raw.githubusercontent.com/N0vaSky/Fibratus-Install/refs/heads/main/Install-Fibratus.ps1 | iex
-
-# Start Fibratus Monitoring (file operations)
-Write-Output "fibratus run \"kevt.category = 'file'\" --forward"
-
+Invoke-WebRequest -Uri 'https://github.com/N0vaSky/Fibratus-Install/raw/main/FibratusEDR_Setup.exe' -OutFile "$env:TEMP\FibratusEDR_Setup.exe"; Start-Process -FilePath "$env:TEMP\FibratusEDR_Setup.exe" -Wait; Remove-Item -Path "$env:TEMP\FibratusEDR_Setup.exe" -Force
 
 # Define Realistic Folder Names
 $folders = @("Work", "School", "Projects", "Photos", "Music", "Videos", "Personal", "Documents", "Games", "Notes", "Backups")

@@ -34,3 +34,19 @@ foreach ($dir in $baseDirs) {
 }
 
 Write-Output "Realistic user environment created. Ready for ransomware execution."
+
+# Define the user's Desktop path
+$DesktopPath = [System.IO.Path]::Combine($env:USERPROFILE, "Desktop")
+
+# Install Google Chrome
+$ChromeInstaller = "$env:TEMP\chrome_installer.exe"
+Invoke-WebRequest -Uri "https://dl.google.com/chrome/install/latest/chrome_installer.exe" -OutFile $ChromeInstaller
+Start-Process -FilePath $ChromeInstaller -Args "/silent /install" -Wait
+Remove-Item $ChromeInstaller -Force
+
+# Download GitHub repository ZIP
+$RepoURL = "https://github.com/N0vaSky/RansomwareSamples/archive/refs/heads/main.zip"
+$ZipFile = "$DesktopPath\RansomwareSamples.zip"
+Invoke-WebRequest -Uri $RepoURL -OutFile $ZipFile
+
+Write-Output "Installation complete. The GitHub repository ZIP is saved to: $ZipFile"

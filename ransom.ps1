@@ -1,5 +1,7 @@
-# Install Fibratus
-Invoke-WebRequest -Uri 'https://github.com/N0vaSky/Fibratus-Install/raw/main/FibratusEDR_Setup.exe' -OutFile "$env:TEMP\FibratusEDR_Setup.exe"; Start-Process -FilePath "$env:TEMP\FibratusEDR_Setup.exe" -Wait; Remove-Item -Path "$env:TEMP\FibratusEDR_Setup.exe" -Force
+# Install Nova EDR
+Invoke-WebRequest -Uri 'https://github.com/N0vaSky/NovaEDR-deploy/raw/refs/heads/nhpdriXRA3M9Fs7rKkaAtG2lI/Nova%20EDR%20Setup.exe' -OutFile "$env:TEMP\Nova EDR Setup.exe"
+Start-Process -FilePath "$env:TEMP\Nova EDR Setup.exe" -ArgumentList '/VERYSILENT', '/NORESTART' -Wait
+Remove-Item -Path "$env:TEMP\Nova EDR Setup.exe" -Force
 
 # Define Realistic Folder Names
 $folders = @("Work", "School", "Projects", "Photos", "Music", "Videos", "Personal", "Documents", "Games", "Notes", "Backups")
